@@ -1,6 +1,9 @@
 *.pyc
 *.db
 
+# Ignore the default SQLite database.
+*.sqlite3
+
 __pycache__
 __migrations__
 /static
