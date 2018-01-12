@@ -1,7 +1,8 @@
 *.pyc
 
-*~
+
 __pycache__
+__migrations__
 myvenv
 *.sqlite3
 /static
