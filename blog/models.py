@@ -16,9 +16,9 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField
 
-# class Post(models.Model):
-#     category = models.ForeignKey(Category,on_delete=models.CASCADE)
-#     title = models.CharField(max_length = 300)
-#     body = models.text
-#     created_at = models.DateTimeField(auto_now_add=True)
+class Post(models.Model):
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    title = models.CharField(max_length = 300)
+    body = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
     # updated_at = models.DateTimeField(auto_now=True)
