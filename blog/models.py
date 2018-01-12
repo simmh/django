@@ -14,10 +14,10 @@ from django.db import models
 
 
 class Category(models.Model):
-    name = models.CharField
+    name = models.CharField(max_length = 300)
 
 class Post(models.Model):
-    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    category = models.ForeignKey(Category,on_delete = models.CASCADE)
     title = models.CharField(max_length = 300)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
