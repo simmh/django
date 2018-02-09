@@ -1,0 +1,14 @@
+Django
+django-extensions
+django-taggit
+django-model-utils
+
+
+# beautifulsoup4
+# bleach
+# Scrapy
+
+# django-imagekit
+# Pillow
+
+# django-froala-editor
