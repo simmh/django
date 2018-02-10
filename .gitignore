@@ -11,6 +11,6 @@ __pycache__/
 local_settings.py
 secrets.json
 
-
+*.sqlite3
 
 # Distribution / packaging

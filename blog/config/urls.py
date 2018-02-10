@@ -14,19 +14,30 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'^blog/', include('core.urls', namespace='blog')),
-    # url(r'^$', views.index, name='index'),
-    # url(r'^html/(?P<path>.*)$', views.serve_html, name='html'),
+    # path('^blog/', include('core.urls')),
 ]
 
-# urlpatterns = [
-    # ... the rest of your URLconf goes here ...
-# ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+from core import views as core_views
+urlpatterns += [
+    path('html/<str:path>.*)', core_views.serve_html, name='html'),
+    # path('blog/', core_views.post_list_view, name='post_list'),
+    path('category/',
+         core_views.post_list_view, name='post_list'),
+    path('category/<str:category>/',
+         core_views.post_list_view, name='post_list'),
+    path('post/<int:pk>/', core_views.post_detail_view, name='post_detail'),
+]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
