@@ -15,6 +15,8 @@ from model_utils import Choices
 
 
 class Category(models.Model):
+    STATUS_CHOICES = Choices('private', 'public')
+    status = StatusField(choices_name='STATUS_CHOICES')
     name = models.CharField(max_length=80)
     parent = models.ForeignKey(
         'self', blank=True, null=True, on_delete=models.CASCADE)
